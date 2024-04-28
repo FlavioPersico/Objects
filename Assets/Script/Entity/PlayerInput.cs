@@ -19,6 +19,16 @@ public class PlayerInput : MonoBehaviour
 		{
 			myPlayer.Attack();
 		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			bool updateNukeUI = UiManager.singleton.UpdateNuke("Use");
+
+			if (updateNukeUI)
+			{
+				myPlayer.NukeBomb();
+			}
+		}
 	}
 
 	void FixedUpdate()

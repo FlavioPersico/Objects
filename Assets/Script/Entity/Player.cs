@@ -34,6 +34,11 @@ public class Player : Character
 		}
 	}
 
+	public void NukeBomb()
+	{
+		weapon.ExplodeNuke();
+	}
+
 	public override void Die()
 	{
 		GameManager.singleton.EndGame();

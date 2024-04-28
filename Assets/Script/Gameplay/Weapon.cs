@@ -27,4 +27,14 @@ public class Weapon: ScriptableObject
 		Bullet tempBullet = GameObject.Instantiate(bulletReference, position, direction);
 		tempBullet.SetUpBullet(tag, damage);
 	}
+
+    public void ExplodeNuke()
+    {
+        var foundEnemies = FindObjectsOfType<Enemy>();
+        
+        for (int i = 0; i < foundEnemies.Length; i++)
+        {
+            Destroy(foundEnemies[i].gameObject);
+        }
+	}
 }

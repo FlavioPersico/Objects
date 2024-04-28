@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI healthValue;
     [SerializeField] private TextMeshProUGUI scoreValue;
     [SerializeField] private TextMeshProUGUI highScoreValue;
-    [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private NukeUI nukeUI;
+	[SerializeField] private GameObject gameOverScreen;
 
     public static UiManager singleton;
 
@@ -33,7 +35,28 @@ public class UiManager : MonoBehaviour
 	    highScoreValue.text = valueParam.ToString();
 	}
 
-    public void GameOverScreen(int scoreParam, int highScoreParam)
+	public bool UpdateNuke(string updateParam)
+	{
+		if(updateParam == "Use")
+        {
+            if (nukeUI.EmptyNukeUI() == false)
+            {
+                nukeUI.UseNuke();
+                return true;
+            }
+		}
+        else
+        {
+            if(nukeUI.FullNukeUI()  == false)
+            {
+				nukeUI.AddNuke();
+                return true;
+			}
+        }
+		return false;
+	}
+
+	public void GameOverScreen(int scoreParam, int highScoreParam)
     {
         gameOverScreen.gameObject.SetActive(true);
         gameOverScreen.GetComponent<GameOverManager>().UpdateGameOverScreen(scoreParam, highScoreParam);
