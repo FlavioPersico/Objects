@@ -129,5 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9e98e11b51e3645b3e0876ae40d979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnProbability: 0.3
   timer: 0
-  nukeLifeTime: 0
+  nukeLifeTime: 5

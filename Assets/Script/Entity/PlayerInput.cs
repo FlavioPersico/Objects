@@ -1,23 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour
 {
     private Player myPlayer;
     public Vector2 direction;
 	public float angleToRotate;
-    // Start is called before the first frame update
-    void Start()
+	private bool powerUp;
+	// Start is called before the first frame update
+	void Start()
     {
         myPlayer = GetComponent<Player>();
     }
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+
+		powerUp = myPlayer.GetPowerUp();
+		if (powerUp)
 		{
-			myPlayer.Attack();
+			if(Input.GetMouseButton(0))
+			{
+				myPlayer.Attack();
+			}
+		}
+		else
+		{
+			if (Input.GetMouseButtonDown(0))
+			{
+				myPlayer.Attack();
+			}
 		}
 
 		if (Input.GetMouseButtonDown(1))

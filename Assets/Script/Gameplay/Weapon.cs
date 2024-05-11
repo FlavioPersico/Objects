@@ -35,6 +35,7 @@ public class Weapon: ScriptableObject
         for (int i = 0; i < foundEnemies.Length; i++)
         {
             Destroy(foundEnemies[i].gameObject);
+            ScoreManager.singleton.IncreaseScore();
         }
 	}
 }

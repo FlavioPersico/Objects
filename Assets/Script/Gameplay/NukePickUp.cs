@@ -11,7 +11,7 @@ public class NukePickUp : PickUp
 
 	private void Awake()
 	{
-		nukeLifeTime = 5;
+		//spawnProbability = 0.3f;
 	}
 
 	private void Update()
@@ -31,10 +31,15 @@ public class NukePickUp : PickUp
 
 	private void NukeLifeTimeEnd()
 	{
-		timer = Time.time;
+		timer += Time.deltaTime;
 		if (timer > nukeLifeTime) 
 		{
 			Destroy(gameObject);
 		}
+	}
+
+	public override float SpawnProbability()
+	{
+		return base.SpawnProbability();
 	}
 }

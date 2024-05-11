@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Player : Character
@@ -7,11 +8,14 @@ public class Player : Character
 	//[SerializeField] private Weapon weapon;
 	[SerializeField] private Bullet bullet;
 	private float lastShot;
+	private bool powerUpShot;
+	private Cooldown powerUpCoolDown;
 
 	protected override void Start()
 	{
 		health = new Health(100);
 		rb_character = GetComponent<Rigidbody2D>();
+		powerUpCoolDown = GetComponent<Cooldown>();
 		health.OnHealthChange.AddListener(ChangeHealth);
 	}
 
@@ -53,5 +57,16 @@ public class Player : Character
 	public void ReceiveDamage(int damage)
 	{
 		health.TakeDamage(damage);
+	}
+
+	public bool GetPowerUp()
+	{
+		return powerUpCoolDown.GetCollingDown();
+	}
+
+	public void PowerUp(bool powerUpParam)
+	{
+		powerUpCoolDown.SetCollingDown(powerUpParam);
+		powerUpShot = powerUpParam;
 	}
 }

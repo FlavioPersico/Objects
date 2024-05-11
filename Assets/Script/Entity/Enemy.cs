@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public abstract class Enemy : Character
 {
 	protected Player target;
 	//[SerializeField] protected Weapon weapon;
 	[SerializeField] protected float attackDistance;
+	[SerializeField] protected GameObject[] pickUpPrefab;
 	protected float angle;
 
 
@@ -40,7 +40,7 @@ public abstract class Enemy : Character
 
 	public virtual void ChangeHealth(int health)
 	{
-		Debug.Log($"Health Changed! {health}");
+		//Debug.Log($"Health Changed! {health}");
 		if(health <= 0)
 		{
 			GameManager.singleton.scoreManager.IncreaseScore();
@@ -63,6 +63,7 @@ public abstract class Enemy : Character
 
 	public override void Die()
 	{
+		GenerateRandomLoot();
 		Destroy(gameObject);
 	}
 
@@ -75,6 +76,20 @@ public abstract class Enemy : Character
 		else
 		{
 			Attack();
+		}
+	}
+
+	private void GenerateRandomLoot()
+	{
+		GameObject randomLootPrefab = pickUpPrefab[Random.Range(0, pickUpPrefab.Length)];
+		float randomSpawnProbability = Random.Range(0.0f, 1.0f);
+
+		float spanwProbability = randomLootPrefab.GetComponent<PickUp>().SpawnProbability();
+
+		Debug.Log(spanwProbability);
+		if(spanwProbability >= randomSpawnProbability)
+		{
+			Instantiate(randomLootPrefab, transform.position, Quaternion.identity);
 		}
 	}
 }

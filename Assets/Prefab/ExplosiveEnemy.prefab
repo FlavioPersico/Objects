@@ -102,8 +102,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   rb_character: {fileID: 211762287248020395}
-  attackDistance: 0
   weapon: {fileID: 11400000, guid: 98bfe2c2f3f8c2044b4f17b5ad0c570f, type: 2}
+  attackDistance: 0
+  pickUpPrefab:
+  - {fileID: 1529302720829537254, guid: 3d42f829705d7cc4c939a8108e88fcb4, type: 3}
+  - {fileID: 1478563596615673868, guid: 8aa1c8c152e31444fb84d3ff6a85148e, type: 3}
 --- !u!50 &211762287248020395
 Rigidbody2D:
   serializedVersion: 4
