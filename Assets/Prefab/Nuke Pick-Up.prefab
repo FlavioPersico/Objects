@@ -130,5 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnProbability: 0.3
+  pickUpAudio: {fileID: 8300000, guid: ab91ccdfde194784c96bbf93a128cc18, type: 3}
   timer: 0
   nukeLifeTime: 5

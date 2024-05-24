@@ -10,6 +10,7 @@ public class Player : Character
 	private float lastShot;
 	private bool powerUpShot;
 	private Cooldown powerUpCoolDown;
+	[SerializeField] private AudioClip dieAudio;
 
 	protected override void Start()
 	{
@@ -46,6 +47,7 @@ public class Player : Character
 	public override void Die()
 	{
 		GameManager.singleton.EndGame();
+		SoundControl.audioPlayer.PlayOneShot(dieAudio, 50f);
 		Destroy(this.gameObject);
 	}
 

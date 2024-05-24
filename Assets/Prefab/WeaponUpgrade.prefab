@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnProbability: 0.5
+  pickUpAudio: {fileID: 8300000, guid: ab91ccdfde194784c96bbf93a128cc18, type: 3}
   timer: 0
   PowerUpLifeTime: 5
 --- !u!60 &1529302720829537253

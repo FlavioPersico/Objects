@@ -12,6 +12,8 @@ public class Weapon: ScriptableObject
 	[SerializeField] private Sprite icon;
 	[SerializeField] public int damage;
     [SerializeField] public float fireRate;
+    [SerializeField] private AudioClip shotAudio;
+	[SerializeField] private AudioClip nukeAudio;
 
 	public Weapon()
     {
@@ -25,14 +27,16 @@ public class Weapon: ScriptableObject
     public void Shoot(Vector2 position, Quaternion direction, string tag)
     {
 		Bullet tempBullet = GameObject.Instantiate(bulletReference, position, direction);
+        SoundControl.audioPlayer.PlayOneShot(shotAudio, 2f);
 		tempBullet.SetUpBullet(tag, damage);
 	}
 
     public void ExplodeNuke()
     {
         var foundEnemies = FindObjectsOfType<Enemy>();
-        
-        for (int i = 0; i < foundEnemies.Length; i++)
+
+		SoundControl.audioPlayer.PlayOneShot(nukeAudio, 10f);
+		for (int i = 0; i < foundEnemies.Length; i++)
         {
             Destroy(foundEnemies[i].gameObject);
             ScoreManager.singleton.IncreaseScore();

@@ -8,6 +8,7 @@ public abstract class Enemy : Character
 	//[SerializeField] protected Weapon weapon;
 	[SerializeField] protected float attackDistance;
 	[SerializeField] protected GameObject[] pickUpPrefab;
+	[SerializeField] protected AudioClip dieAudio;
 	protected float angle;
 
 
@@ -64,6 +65,7 @@ public abstract class Enemy : Character
 	public override void Die()
 	{
 		GenerateRandomLoot();
+		SoundControl.audioPlayer.PlayOneShot(dieAudio, 5f);
 		Destroy(gameObject);
 	}
 

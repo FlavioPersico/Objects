@@ -12,8 +12,9 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI highScoreValue;
     [SerializeField] private NukeUI nukeUI;
 	[SerializeField] private GameObject gameOverScreen;
+	[SerializeField] private AudioClip playAudio;
 
-    public static UiManager singleton;
+	public static UiManager singleton;
 
 	private void Awake()
 	{
@@ -64,11 +65,13 @@ public class UiManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        SceneManager.LoadScene("menu");
+		SoundControl.audioPlayer.PlayOneShot(playAudio,15f);
+		SceneManager.LoadScene("menu");
     }
 
     public void TryAgain()
     {
-        SceneManager.LoadScene("game");
+		SoundControl.audioPlayer.PlayOneShot(playAudio, 15f);
+		SceneManager.LoadScene("game");
     }
 }

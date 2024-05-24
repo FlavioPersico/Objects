@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
 	[SerializeField] protected float spawnProbability;
+	[SerializeField] private AudioClip pickUpAudio;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -16,6 +17,7 @@ public class PickUp : MonoBehaviour
 
 	protected virtual void PickMe(Character character)
 	{
+		SoundControl.audioPlayer.PlayOneShot(pickUpAudio);
 		Destroy(gameObject);
 	}
 

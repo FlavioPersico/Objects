@@ -17,6 +17,7 @@ public class SniperEnemy : Enemy
 			{ 
 				lineRenderer.SetPosition(0, transform.position);
 				lineRenderer.SetPosition(1, target.transform.position);
+				transform.rotation = Quaternion.Euler(0, 0, angle);
 			}
 			else
 			{
