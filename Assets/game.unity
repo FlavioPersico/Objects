@@ -8377,7 +8377,7 @@ MonoBehaviour:
   dificultLevelTimer: 0
   dificultLevelTimerIncreaser: 15
   minDificultLevel: 15
-  maxDificultLevel: 3
+  maxDificultLevel: 2
   enemyLimiter: 4
   timer: 0
   playAudio: {fileID: 0}
